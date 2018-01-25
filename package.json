@@ -1,0 +1,11 @@
+{
+  "name": "miWebServer",
+  "description": "Servidor web de prueba",
+  "version": "1.0.0",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "4.x",
+    "openpay": "^1.0.2"
+  }
+}
