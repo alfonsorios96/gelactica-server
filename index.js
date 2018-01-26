@@ -1,10 +1,10 @@
-// importar
+const PORT = process.env.PORT || 5000
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const Openpay = require('openpay');
- 
-// instanciar
+
 const app = express();
 const openpay = new Openpay('mg5nk23vsodhgb4zjf9w','sk_4b45db1074bb4eb48c9f66312cc946ab');
 
@@ -58,4 +58,4 @@ app.post('/payout', (request, response) => {
     });
 });
 
-app.listen(5000, () => console.log('Example app listening on port 5000!'));
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
