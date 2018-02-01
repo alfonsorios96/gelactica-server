@@ -8,6 +8,8 @@ const Openpay = require('openpay');
 const app = express();
 const openpay = new Openpay('mg5nk23vsodhgb4zjf9w','sk_4b45db1074bb4eb48c9f66312cc946ab');
 
+const email = require('./mail');
+
 app.use(cors({
   origin: '*'
 }));
@@ -18,6 +20,8 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+
+app.post('/email', email.sendEmail);
 
 app.post('/purchase', (request, response) => {
   let charge = {
@@ -44,7 +48,7 @@ app.post('/purchase', (request, response) => {
 });
 
 app.post('/payout', (request, response) => {
-    var payout = {
+    let payout = {
       "method": "bank_account",
       "bank_account":{
         "clabe":"012298026516924616",
@@ -58,4 +62,4 @@ app.post('/payout', (request, response) => {
     });
 });
 
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
