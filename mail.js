@@ -13,47 +13,49 @@ exports.sendEmail = (request, response) => {
     });
 
     let mailOptions = {
-        from: 'Gelactica Hair',
+        from: '"Gelactica Hair 👻" <soporte@gelactica.com>',
         to: payload.customer.email,
         subject: 'Gelactica Hair | Pedido ' + payload.authorization,
-        text: `
-           <html lang="es">
-  <head>
+        html: `
+            <!DOCTYPE html>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <title>Pedido Gelactica Hair</title>
-  </head>
-  <body>
-    <h2>Pedido #${payload.authorization}</h2>
-    <table>
-      <tr>
+</head>
+<body>
+<h2>Pedido #${payload.authorization}</h2>
+<table>
+    <tr>
         <th>Producto</th>
         <th>Precio regular</th>
         <th>Envío</th>
         <th>Precio total</th>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
         <td>Gelactica</td>
         <td>$50 USD</td>
         <td>$2 USD</td>
-        <td>$${payload.amount} USD</td>
-      </tr>
-    </table>
-    <p>
+        <td>$ ${payload.amount} USD</td>
+    </tr>
+</table>
+<p>
     En caso de que su orden no llegara al domicilio o no nos comuniquemos con usted dentro de 5 días hábiles
-                siéntase con la libertad de enviarnos un correo electrónico indicando su orden de compra
-                #[[payload.authorization]] a soporte@gelactica-hair.com
+    siéntase con la libertad de enviarnos un correo electrónico indicando su orden de compra
+    #${payload.authorization} a soporte@gelactica-hair.com
 </p>
-  </body>
+</body>
 </html>
+
         `
     };
 
+
+    // send mail with defined transport object
     transporter.sendMail(mailOptions, (error, info) => {
-        if (error){
-            console.log(error);
-            response.send(500, error.message);
-        } else {
-            response.send(info);
+        if (error) {
+            response.status(500).send(error);
         }
+        response.status(200).send(info);
     });
 };

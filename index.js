@@ -21,6 +21,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('view engine', 'ejs');
+
 app.post('/email', email.sendEmail);
 
 app.post('/purchase', (request, response) => {
