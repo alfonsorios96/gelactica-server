@@ -35,7 +35,7 @@ exports.sendEmail = (request, response) => {
     <tr>
         <td>Gelactica</td>
         <td>$50 USD</td>
-        <td>$2 USD</td>
+        <td>$3 USD</td>
         <td>$ ${payload.amount} USD</td>
     </tr>
 </table>

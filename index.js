@@ -10,9 +10,7 @@ const openpay = new Openpay('mg5nk23vsodhgb4zjf9w','sk_4b45db1074bb4eb48c9f66312
 
 const email = require('./mail');
 
-app.use(cors({
-  origin: '*'
-}));
+app.use(cors());
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
