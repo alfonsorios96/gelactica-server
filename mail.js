@@ -28,13 +28,15 @@ exports.sendEmail = (request, response) => {
 <table>
     <tr>
         <th>Producto</th>
+        <th>Cantidad</th>
         <th>Precio regular</th>
         <th>Envío</th>
         <th>Precio total</th>
     </tr>
     <tr>
-        <td>Gelactica</td>
-        <td>$50 USD</td>
+        <td>Gelactica Gel</td>
+        <td>${payload.quantity} piezas</td>
+        <td>$18 USD p/pieza</td>
         <td>$3 USD</td>
         <td>$ ${payload.amount} USD</td>
     </tr>
