@@ -14,8 +14,8 @@ exports.sendEmail = (request, response) => {
 
     let mailOptions = {
         from: '"Gelactica Hair 👻" <soporte@gelactica.com>',
-        to: payload.customer.email,
-        subject: 'Gelactica Hair | Pedido ' + payload.authorization,
+        to: payload.email,
+        subject: 'Gelactica Hair',
         html: `
             <!DOCTYPE html>
 <html lang="es">
@@ -24,7 +24,6 @@ exports.sendEmail = (request, response) => {
     <title>Pedido Gelactica Hair</title>
 </head>
 <body>
-<h2>Pedido #${payload.authorization}</h2>
 <table>
     <tr>
         <th>Producto</th>
@@ -43,15 +42,13 @@ exports.sendEmail = (request, response) => {
 </table>
 <p>
     En caso de que su orden no llegara al domicilio o no nos comuniquemos con usted dentro de 5 días hábiles
-    siéntase con la libertad de enviarnos un correo electrónico indicando su orden de compra
-    #${payload.authorization} a soporte@gelactica-hair.com
+    siéntase con la libertad de enviarnos un correo electrónico a soporte@gelactica-hair.com. Le recordamos que su pedido se paga en contra entrega.
 </p>
 </body>
 </html>
 
         `
     };
-
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions, (error, info) => {
