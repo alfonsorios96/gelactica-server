@@ -26,6 +26,9 @@ exports.sendEmail = (request, response) => {
 <body>
 <table>
     <tr>
+        <th>Cliente</th>
+        <th>Dirección de entrega</th>
+        <th>Teléfono de contacto</th>
         <th>Producto</th>
         <th>Cantidad</th>
         <th>Precio regular</th>
@@ -33,6 +36,9 @@ exports.sendEmail = (request, response) => {
         <th>Precio total</th>
     </tr>
     <tr>
+        <td>${payload.name}</td>
+        <td>${payload.address}</td>
+        <td>${payload.phone}</td>
         <td>Gelactica Gel</td>
         <td>${payload.quantity} piezas</td>
         <td>$18 USD p/pieza</td>
